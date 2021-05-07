@@ -1,9 +1,10 @@
 import React from 'react';
+import Page from '../components/Page';
 
 export default function IndexPage() {
   return (
-    <div>
+    <Page>
       <p>Hey!</p>
-    </div>
+    </Page>
   );
 }
