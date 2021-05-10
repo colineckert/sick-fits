@@ -39,7 +39,7 @@ export default function CreateProduct() {
     description: 'These are the best shoes',
   });
 
-  const [createProduct, { data, error, loading }] = useMutation(
+  const [createProduct, { loading, error, data }] = useMutation(
     CREATE_PRODUCT_MUTATION,
     {
       variables: inputs,
@@ -55,7 +55,9 @@ export default function CreateProduct() {
         const res = await createProduct();
         clearForm();
         // Go to new product's page!
-        Router.push({ pathname: `/product/${res.data.createProduct.id}` });
+        Router.push({
+          pathname: `/product/${res.data.createProduct.id}`,
+        });
       }}
     >
       <DisplayError error={error} />
