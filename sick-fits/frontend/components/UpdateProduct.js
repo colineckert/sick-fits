@@ -46,7 +46,7 @@ export default function UpdateProduct({ id }) {
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_PRODUCT_MUTATION);
 
-  // Create some state for the form inputs
+  // 2.5 Create some state for the form inputs
   const { inputs, handleChange, resetForm, clearForm } = useForm(data?.Product);
 
   if (loading) return <p>Loading...</p>;
