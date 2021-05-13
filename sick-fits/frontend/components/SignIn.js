@@ -50,7 +50,7 @@ export default function SignIn() {
       : undefined;
 
   return (
-    <Form mathod="POST" onSubmit={handleSubmit}>
+    <Form method="POST" onSubmit={handleSubmit}>
       <h2>Sign Into Your Account</h2>
       <DisplayError error={error} />
       <fieldset>
