@@ -8,9 +8,8 @@ import DisplayError from './ErrorMessage';
 const REQUEST_RESET_MUTATION = gql`
   mutation REQUEST_RESET_MUTATION($email: String!) {
     sendUserPasswordResetLink(email: $email) {
-      id
-      email
-      name
+      code
+      message
     }
   }
 `;
@@ -50,11 +49,8 @@ export default function RequestReset() {
       <h2>Request a Password Reset</h2>
       <DisplayError error={error} />
       <fieldset>
-        {data?.createUser && (
-          <p>
-            Signed up with {data.createUser.email} - Please go ahead and sign
-            in!
-          </p>
+        {data?.sendUserPasswordResetLink === null && (
+          <p>Success! Check your email for a link!</p>
         )}
         <label htmlFor="email">
           Email
