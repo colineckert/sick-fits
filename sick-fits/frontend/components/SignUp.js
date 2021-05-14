@@ -26,6 +26,7 @@ const SIGNIN_MUTATION = gql`
 export default function SignUp() {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
+    name: '',
     password: '',
   });
 
@@ -51,7 +52,7 @@ export default function SignUp() {
 
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Sign Into Your Account</h2>
+      <h2>Sign Up For an Account</h2>
       <DisplayError error={error} />
       <fieldset>
         <label htmlFor="email">
@@ -62,6 +63,17 @@ export default function SignUp() {
             placeholder="Your Email Address"
             autoComplete="email"
             value={inputs.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="email">
+          Your Name
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            autoComplete="name"
+            value={inputs.name}
             onChange={handleChange}
           />
         </label>
@@ -76,7 +88,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Sign In!</button>
+        <button type="submit">Sign Up!</button>
       </fieldset>
     </Form>
   );
