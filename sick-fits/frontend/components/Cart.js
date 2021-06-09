@@ -3,6 +3,7 @@ import CartStyles from './styles/CartStyles';
 import Supreme from './styles/Supreme';
 import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
+import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -54,6 +55,9 @@ export default function Cart() {
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </ul>
+      <footer>
+        <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+      </footer>
     </CartStyles>
   );
 }
