@@ -34,10 +34,12 @@ function CartItem({ cartItem }) {
       />
       <div>
         <h3>{product.name}</h3>
-        <p>{formatMoney(product.price * cartItem.quantity)}</p>-
-        <em>
-          {cartItem.quantity} &times; {formatMoney(product.price)} each
-        </em>
+        <p>
+          {formatMoney(product.price * cartItem.quantity)} -
+          <em>
+            {cartItem.quantity} &times; {formatMoney(product.price)} each
+          </em>
+        </p>
       </div>
     </CartItemStyles>
   );
