@@ -75,7 +75,26 @@ async function checkout(
 
   console.log(charge);
   // 4. Convert the cartItems to OrderItems
+  const orderItems = cartItems.map(cartItem => {
+    const orderItem = {
+      name: cartItem.product.name,
+      description: cartItem.product.description,
+      price: cartItem.product.price,
+      quantity: cartItem.quantity,
+      image: { connect: { id: cartItem.product.photo.id }},
+      user: { connect: { id: userId }},
+    }
+    return orderItem;
+  });
   // 5. Create the order and return it
+  const order = await context.lists.Order.createOne({
+    data: {
+      total: charge.amount,
+      charge: charge.id,
+      items: { create: orderItems },
+      user: { connect: { id: userId }},
+    }
+  });
 }
 
 export default checkout;
