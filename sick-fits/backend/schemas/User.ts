@@ -1,10 +1,9 @@
 import { list } from '@keystone-next/keystone/schema';
 import { text, password, relationship } from '@keystone-next/fields';
 
-// named export - make auto imports work nicer
 export const User = list({
-  // access: ,
-  // ui: ,
+  // access:
+  // ui
   fields: {
     name: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
