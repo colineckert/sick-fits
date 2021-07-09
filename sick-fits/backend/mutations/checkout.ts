@@ -81,8 +81,7 @@ async function checkout(
       description: cartItem.product.description,
       price: cartItem.product.price,
       quantity: cartItem.quantity,
-      image: { connect: { id: cartItem.product.photo.id } },
-      user: { connect: { id: userId } },
+      photo: { connect: { id: cartItem.product.photo.id } },
     };
     return orderItem;
   });
