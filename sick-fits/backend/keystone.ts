@@ -4,6 +4,7 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
 import { CartItem } from './schemas/CartItem';
@@ -14,6 +15,7 @@ import 'dotenv/config';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
+import { permissionsList } from './schemas/fields';
 
 function check(name: string) {}
 
@@ -68,6 +70,7 @@ export default withAuth(
       CartItem,
       OrderItem,
       Order,
+      Role,
     }),
     extendGraphqlSchema,
     ui: {
@@ -78,7 +81,7 @@ export default withAuth(
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
-      User: 'id name email',
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );
